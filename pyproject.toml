@@ -1,0 +1,8 @@
+[project]
+name = "youtube-transcriber"
+version = "0.1.0"
+description = "A project to transcribe YouTube videos"
+authors = ["Lucas"]
+requires-python = ">=3.10"
+
+[tool.uv] 
