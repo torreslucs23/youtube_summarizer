@@ -1,6 +1,6 @@
 from langchain_groq import ChatGroq
 import os
-from config.keys import GROQ_API_KEY
+from app.config.keys import GROQ_API_KEY
 
 
 api_key = GROQ_API_KEY
@@ -16,7 +16,7 @@ async def create_llm():
     return ChatGroq(
         model="llama3-70b-8192",
         temperature=0.7,
-        max_tokens=None,
+        max_tokens=1024,
         timeout=None,
         max_retries=2,
         api_key=api_key

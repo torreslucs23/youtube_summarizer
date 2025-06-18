@@ -1,19 +1,18 @@
-from langchain_core.prompts import  PromptTemplate
-from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import  ChatPromptTemplate
 
 
-def build_summary_prompt():
+def build_summary_prompt(transcription: str) -> ChatPromptTemplate:
     """
-    Build a summary prompt template for summarizing text.
+    Cria um prompt para o modelo LLaMA com o objetivo de resumir um vídeo do YouTube em português.
     """
-    prompt = PromptTemplate.from_template(
-        [
-            ("system", "You are a helpful assistant that summarizes text."),
-            (
-                "user",
-                "Summarize the following text:\n{input}\n\n"
-                "Please provide a concise summary in one paragraph.",
-            ),
-        ],
-        output_parser=StrOutputParser(),
-    )
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", "Você é um assistente útil e fluente em português, especializado em resumir transcrições de"
+        " vídeos do YouTube de maneira bem detalhada, explicando ao usuário toda a mensagem."),
+        ("user", (
+            "Aqui está a transcrição de um vídeo:\n\n"
+            "{transcription}\n\n"
+            "Por favor, faça um resumo claro e conciso desse vídeo em **português**, com apenas um parágrafo."
+        )),
+    ])
+    
+    return prompt.partial(transcription=transcription)

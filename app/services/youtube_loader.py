@@ -1,5 +1,4 @@
 import time
-import asyncio
 from langchain_community.document_loaders import YoutubeLoader
 from typing import List, Optional
 import logging
