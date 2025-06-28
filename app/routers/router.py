@@ -19,10 +19,11 @@ async def get_summary(body: Req):
     url = body.url
     if not url:
         return {"error": "URL is required"}
-    response = await summarize(url)
-    if not response:
+    try:
+        response = await summarize(url)
+    except Exception:
         logging.error(f"No transcript found for URL: {url}")
-        raise HTTPException(status_code=404, detail="Transcript not found for the provided URL")
+        raise
     logging.info(f"Transcript loaded successfully for URL: {url}")
 
     return {"summary": response}

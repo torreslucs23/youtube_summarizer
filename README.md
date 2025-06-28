@@ -14,22 +14,17 @@ source .venv/bin/activate
 
 ### 2. Install the required packages:
 ```bash
-uv pip install transformers youtube-transcript-api openai python-dotenv
+uv pip install -r requirements.txt
 ```
 
-### 3. Save the installed packages to `requirements.txt`:
-```bash
-uv pip freeze > requirements.txt
-```
-
-### 4. Set up your API key:
+### 3. Set up your API key:
 Create a `.env` file in the root directory of the project and add your Groq API key:
 
 ```
-GROQ_API_KEY=your-api-key-here
+echo "GROQ_API_KEY=your-api-key-here" > .env
 ```
 
-### 5. Run the application:
+### 4. Run the application:
 ```bash
 uvicorn app.main:app --reload
 ```
