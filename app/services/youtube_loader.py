@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 
 #load_youtube_transcript function to load YouTube transcripts with retries
-async def load_youtube_transcript(video_url: str, language: List[str] = ["pt", "pt-BR", "en"]):
+async def load_youtube_transcript(video_url: str, language: List[str] = ["pt-BR","pt", "en"]):
     for attempt in range(3):
         try:
             loader = YoutubeLoader.from_youtube_url(video_url, language=language)
